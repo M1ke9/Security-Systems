@@ -1,0 +1,56 @@
+
+Security Systems - Assignment 5
+Michail Marketakis 2017030165
+
+gcc (Ubuntu 9.3.0-17ubuntu1~20.04)
+
+####################################### Network traffic monitoring using the Packet Capture library #############################################
+
+
+Options: -i ,-r ,-f,-h
+
+-i : Monitor the traffic live from a network interface (pcap_open_live).
+-r: Read a pcap file (pcap_open_offline).
+-f : filter expression.
+-h : help message.
+
+Instructions for running:
+
+Step I)  run "make" to create the executable pcap_ex.
+
+Step II) Available combos:
+
+1) sudo ./pcap_ex -i    ( monitor traffic live without filter!)
+
+Then a list of the available devices will appear,type one and press enter.
+
+2) sudo ./pcap_ex -i -f "port 8080" (monitor traffic live with filter expression!)
+
+Then a list with the available devices will appear to choose one 
+
+The output will appear at the file "log.txt".
+
+**DONT Forget "sudo", otherwise there are problems with socket permissions.**
+**Enter the filter as an command line argument!!! ** 
+
+*** IMPORTANT NOTE: after every run, the file "log.txt" is on append mode.
+run "make clean" to clean the file every time you run the program. ***
+
+
+3) sudo ./pcap_ex -r ( read a pcap file offline).
+
+Then you have to enter a pcap file ( test_pcap_5mins.pcap) and press enter.
+
+The output will appear at the terminal.
+
+
+
+*Could not check the Retransmissions in TCP packets.
+*We cannot tell if a UDP packet is retransmitted.
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+  
+Security Systems - Assignment 4
+Michail Marketakis 2017030165
+
+--In this assignment it's given a login page,CTF-style application with 2 tables(users and items).
+
+--The goal of the assignment is to use the SQL injection Vulnerabilities present withing the application's login to login as "superadmin"!!!
+First of all,we are tryed to understood the code(app.py) and run the application locally to make clear how it works.
+Because of the fact that the code it's exactly the same for the local and the remote app,if we make throught the local task we just have to do the same things to the remote application.
+
+
+--Task I
+As we can see from the code source ,the code line we are intrested of is : 
+query = f"SELECT * FROM users WHERE username = 'user' AND password = '{password}'"
+We just want to Bypass the login page using SQL injection query,and to do that we just need an insertion at the field  '{password}', to create a valid SQL statement.
+The insertion for the logging as "user" will be :  ' OR TRUE --
+If we just printf the query on our code the result will be:
+
+SELECT * FROM users WHERE username = 'user' AND password = '' OR TRUE --'.
+
+As everything gone well,we have access to the Dashboard.
+
+
+--Task II)
+In this task,we have already access to the dashboard from task I, and the point of the task is to
+retrieve inforamtion from the 'users' table instead of 'items'.
+Working like the previous task,the goal is to Bypass the Dashboard page.
+The line of the source code we are intrested of is :
+query = f"SELECT name,category,price FROM items WHERE name = '{name}'"
+We will create a new insertion for the field '{name}',to create a valid SQL statement and have access to the next level.
+The insertion will be: ' UNION SELECT * FROM users -- 
+and the output (print(query)) : 
+SELECT name,category,price FROM items WHERE name = '' UNION SELECT * FROM users --'  , which retrieves information from the users table!!!
+
+Finally, we can see the information of the first user:
+ (Name:1  , Category:superadming ,Price:sup3r4dm1nP@5sw0rd )
+
+That came up from the code line :  results = res.fetchall()[0] 
+
+
+--Task III)
+Finally,we have  the superadmin's password and if we run : http://140.238.219.114:1337/admin
+we can login  as administrator!
+When we do that,we can take our trophy:
+ 
+TUC{SQLi_1s_4w3s0m3_NGL_4nd_th3_sky_1s_blu3}
+
+
+Summary:
+
+Insertion for the field password at the logging of the user : '' OR TRUE --'
+Insertion for the field  name of the items at the Dashboard : '' UNION SELECT * FROM users --'
+Superadmin's code: sup3r4dm1nP@5sw0rd 
+trophy when logging into admin's dashboard: TUC{SQLi_1s_4w3s0m3_NGL_4nd_th3_sky_1s_blu3}
+
+
+
+
+
+
+
+
+
+
+
+

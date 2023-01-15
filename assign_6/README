@@ -1,0 +1,46 @@
+
+
+Assignment 6
+Michail Marketakis 2017030165.
+
+
+############### Network Scanning and Iptables ####################
+
+How to run the program:
+
+1) sudo ./adblock.sh -domains
+
+Με την επιλογη "-domains" βρίσκουμε τα ίδια και τα διαφορετικά domain names απο τα αρχεία domainNames.txt και domainNames2.txt και τα αποθηκεύουμε στα προσωρινά αρχεία IPAddressesSameTmp.txt και IPAddressesDifferentTmp.txt αντίστοιχα.
+'Επειτα βρίσκουμε για κάθε domain name απο το κάθε αρχείο την διεύθυνση ip και τις αποθηκεύουμε στα αρχεία IPAddressesSame.txt και IPAddressesDifferent.txt όπως ζητείται!.
+
+2) sudo ./adblock.sh -ipssame
+
+Configure the DROP adblock rules based on the IP addresses of
+‘IPAddressesSame.txt’ file.
+
+Note:Εμφανίζεται το μήνυμα "wrong argument DROP" , η επιλογη λειτουργεί ορθά.
+
+3) sudo ./adblock.sh -ipsdiff
+
+Configure the REJECT adblock rules based on the IP addresses of
+‘IPAddressesDifferent.txt’ file
+
+Νοte:Εμφανίζεται το μήνυμα "wrong argument REJECT",η επιλογη λειτουργεί ορθά.
+
+4) sudo ./adblock -save
+
+Save rules to ‘adblockRules’ file.
+
+5) sudo ./adblock.sh -load
+
+Load rules from ‘adblockRules’ file.
+
+6)sudo ./adblock -list
+
+List current rules.
+
+7) sudo ./adblock -rest
+
+Reset rules to default settings (i.e. accept all).
+
+
