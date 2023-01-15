@@ -1,0 +1,49 @@
+Michail Marketakis 2017030165
+
+gcc (Ubuntu 9.3.0-17ubuntu1~20.04)
+
+###################Assignement 3 - Enhanced Access Control Logging System########################
+
+I) STEP 1-logger.c
+
+-Developed functions fopen and fwrite for the logging file ( file_logging.log)
+
+-Each log entry contains the following information :
+
+1)UID (unique user ID) (getuid() )
+
+2)File name
+
+3)Date of the action occured
+
+4)Timestamp of the action occured
+
+5)Access type with access types 0,1 and 2 for file creation,file open and file write.
+
+6)Is_action_denied flag (if denied =1 , otherwise 0).
+
+7)File Fingerprint --->getFingerprint by md5 hash functions
+
+
+
+*Note: at the meanwhile I inported the rsa.c and rsa.h files ( makefile completed)  but i had not time to think how to make it works in this assignment. 
+
+
+II) STEP 2-acmonitor.c
+
+1) list_unauthorized_accesses ---> prints all the malicious users( access to more than 7 files with no permisssion).
+
+2) list_file_modifications ---> a table with numbers of times each user modified the file.
+
+
+
+
+
+
+
+
+
+
+
+
+
